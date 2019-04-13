@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View } from "react-native";
-import AnimatedMultistep from "./lib";
+import AnimatedMultistep from "react-native-animated-multistep";
 
 import Step1 from "./steps/step1";
 import Step2 from "./steps/step2";
@@ -21,6 +21,13 @@ export default class App extends Component {
     this.state = {};
   }
 
+  onNext = () => {
+    console.log("Next");
+  };
+  onBack = () => {
+    console.log("Back");
+  };
+
   finish = state => {
     console.log("TCL: App -> state", state);
   };
@@ -32,6 +39,8 @@ export default class App extends Component {
           steps={allSteps}
           onFinish={this.finish}
           animate={true}
+          onBack={this.onBack}
+          onNext={this.onNext}
         />
       </View>
     );
