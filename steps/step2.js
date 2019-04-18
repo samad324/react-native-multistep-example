@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Image, View, TouchableOpacity, TextInput } from "react-native";
 
 import styles from "./styles";
 
@@ -24,14 +24,35 @@ export class step2 extends Component {
 
   render() {
     return (
-        <View style={[styles.container, styles.step2]}>
-        <Text> Step 2 </Text>
-        <View style={styles.btnContainer}>
-          <TouchableOpacity onPress={this.props.back}>
-            <Text>Back</Text>
+      <View style={[styles.container, styles.step1]}>
+        <TextInput
+          style={styles.input}
+          onChangeText={text => this.setState({ text })}
+          value={this.state.text}
+          placeholder={"Email"}
+          placeholderTextColor="#fff"
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={text => this.setState({ text })}
+          value={this.state.text}
+          placeholder={"Phone Number"}
+          placeholderTextColor="#fff"
+        />
+        <View style={[styles.btnContainer, styles.marginAround]}>
+          <TouchableOpacity onPress={this.props.back} style={styles.btnStyle}>
+            <Image
+              source={require("../assets/icons/arrow.png")}
+              style={[styles.btnImage, styles.backBtn]}
+              resizeMode="cover"
+            />
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.nextStep}>
-            <Text>Next</Text>
+          <TouchableOpacity onPress={this.nextStep} style={styles.btnStyle}>
+            <Image
+              source={require("../assets/icons/arrow.png")}
+              style={styles.btnImage}
+              resizeMode="cover"
+            />
           </TouchableOpacity>
         </View>
       </View>

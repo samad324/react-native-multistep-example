@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Image, View, TouchableOpacity, TextInput } from "react-native";
 
 import styles from "./styles";
 
@@ -27,10 +27,27 @@ class step1 extends Component {
   render() {
     return (
       <View style={[styles.container, styles.step1]}>
-        <Text> Step 1 </Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={text => this.setState({ text })}
+          value={this.state.text}
+          placeholder={"First Name"}
+          placeholderTextColor="#fff"
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={text => this.setState({ text })}
+          value={this.state.text}
+          placeholder={"Last Name"}
+          placeholderTextColor="#fff"
+        />
         <View style={styles.btnContainer}>
-          <TouchableOpacity onPress={this.nextStep}>
-            <Text>Next</Text>
+          <TouchableOpacity onPress={this.nextStep} style={styles.btnStyle}>
+            <Image
+              source={require("../assets/icons/arrow.png")}
+              style={styles.btnImage}
+              resizeMode="cover"
+            />
           </TouchableOpacity>
         </View>
       </View>
