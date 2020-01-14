@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { View } from "react-native";
-import AnimatedMultistep from "react-native-animated-multistep";
+import { View, Text, StyleSheet } from "react-native";
+import AnimatedMultistep from "./lib";
 
 import Step1 from "./steps/step1";
 import Step2 from "./steps/step2";
@@ -35,14 +35,34 @@ export default class App extends Component {
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: "#1dd1a1" }}>
-        <AnimatedMultistep
-          steps={allSteps}
-          onFinish={this.finish}
-          animate={true}
-          onBack={this.onBack}
-          onNext={this.onNext}
-        />
+        <View style={styles.upperContainer}>
+          <Text style={styles.loginText}>Register</Text>
+        </View>
+        <View style={styles.lowerContainer}>
+          <AnimatedMultistep
+            steps={allSteps}
+            onFinish={this.finish}
+            animate={true}
+            onBack={this.onBack}
+            onNext={this.onNext}
+          />
+        </View>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  upperContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center"
+  },
+  loginText: {
+    fontSize: 32,
+    color: "#fff"
+  },
+  lowerContainer: {
+    flex: 2
+  }
+});

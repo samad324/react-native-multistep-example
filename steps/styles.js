@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    marginTop: "6%"
   },
   btnContainer: {
     flexDirection: "row",
@@ -12,19 +12,15 @@ export default StyleSheet.create({
     marginTop: "6%"
   },
   step1: {
-    // backgroundColor: "#1dd1a1"
     flex: 1
   },
   step2: {
-    // backgroundColor: "#feca57"
     flex: 1
   },
   step3: {
-    // backgroundColor: "#FF9800"
     flex: 1
   },
   step4: {
-    // backgroundColor: "#2196F3"
     flex: 1
   },
   input: {
@@ -54,5 +50,9 @@ export default StyleSheet.create({
   marginAround: {
     width: "40%",
     justifyContent: "space-between"
+  },
+  currentStepText: {
+    color: "#fff",
+    fontSize: 22
   }
 });

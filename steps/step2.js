@@ -1,20 +1,24 @@
 import React, { Component } from "react";
-import { Image, View, TouchableOpacity, TextInput } from "react-native";
+import { Image, View, TouchableOpacity, TextInput, Text } from "react-native";
 
 import styles from "./styles";
 
 export class step2 extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {};
+    this.state = {
+      totalSteps: "",
+      currentStep: ""
+    };
   }
 
-  componentDidMount() {
-    const { getState } = this.props;
-    const state = getState();
-    console.log("TCL: step2 -> componentDidMount -> state", state);
-  }
+  static getDerivedStateFromProps = props => {
+    const { getTotalSteps, getCurrentStep } = props;
+    return {
+      totalSteps: getTotalSteps(),
+      currentStep: getCurrentStep()
+    };
+  };
 
   nextStep = () => {
     const { next, saveState } = this.props;
@@ -23,8 +27,14 @@ export class step2 extends Component {
   };
 
   render() {
+    const { currentStep, totalSteps } = this.state;
     return (
       <View style={[styles.container, styles.step1]}>
+        <View>
+          <Text
+            style={styles.currentStepText}
+          >{`Step ${currentStep} of ${totalSteps}`}</Text>
+        </View>
         <TextInput
           style={styles.input}
           onChangeText={text => this.setState({ text })}
